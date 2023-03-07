@@ -2,7 +2,7 @@
 
 echo ">>> Building images..."
 
-source ./hooks/arches.sh
+source hooks/arches.sh
 
 if [[ -z "${SOURCE_COMMIT}" ]]; then
     # This var is typically predefined by Docker Hub, but it won't be
@@ -48,3 +48,4 @@ for arch in "${arches[@]}"; do
            -f docker/${arch}/Dockerfile${buildkit_suffix}${distro_suffix} \
            .
 done
+

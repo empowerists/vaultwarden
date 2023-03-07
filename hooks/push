@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./hooks/arches.sh
+source hooks/arches.sh
 
 export DOCKER_CLI_EXPERIMENTAL=enabled
 
