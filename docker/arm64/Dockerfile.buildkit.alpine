@@ -27,7 +27,7 @@
 FROM dpinse/vaultwarden:web-vault@sha256:2398470ba70ffa00ac209b70df06b6e5f12004bdbf4e9374eb038b57f0bc25f2 as vault
 
 ########################## BUILD IMAGE  ##########################
-FROM blackdex/rust-musl:aarch64-musl-stable-1.67.1 as build
+FROM blackdex/rust-musl:aarch64-musl-stable-1.68.1 as build
 
 # Build time options to avoid dpkg warnings and help with reproducible builds.
 ENV DEBIAN_FRONTEND=noninteractive \

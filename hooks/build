@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo ">>> Building images..."
 
@@ -26,7 +26,7 @@ LABELS=(
     org.opencontainers.image.licenses="AGPL-3.0-only"
     org.opencontainers.image.revision="${SOURCE_COMMIT}"
     org.opencontainers.image.source="${SOURCE_REPOSITORY_URL}"
-    org.opencontainers.image.url="https://hub.docker.com/r/${DOCKER_REPO#*/}"
+    org.opencontainers.image.url="https://github.com/dani-garcia/vaultwarden"
     org.opencontainers.image.version="${SOURCE_VERSION}"
 )
 LABEL_ARGS=()
@@ -45,7 +45,7 @@ for arch in "${arches[@]}"; do
     docker build \
            "${LABEL_ARGS[@]}" \
            -t "${DOCKER_REPO}:${DOCKER_TAG}-${arch}" \
-           -f docker/${arch}/Dockerfile${buildkit_suffix}${distro_suffix} \
+           -f "docker/${arch}/Dockerfile${buildkit_suffix}${distro_suffix}" \
            .
 done
 
