@@ -2,7 +2,6 @@
 
 # This file was generated using a Jinja2 template.
 # Please make your changes in `Dockerfile.j2` and then `make` the individual Dockerfiles.
-
 # Using multistage build:
 # 	https://docs.docker.com/develop/develop-images/multistage-build/
 # 	https://whitfin.io/speeding-up-rust-docker-builds/
@@ -27,7 +26,7 @@
 FROM empowerists/bitwarden:web-vault@sha256:e7d06a56aa09ca6cb13c88af633bb1dbcc14dff3380de37e7f5b6746a91a21a7 as vault
 
 ########################## BUILD IMAGE  ##########################
-FROM rust:1.68.1-bullseye as build
+FROM rust:1.68.2-bullseye as build
 
 # Build time options to avoid dpkg warnings and help with reproducible builds.
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -45,7 +44,6 @@ RUN mkdir -pv "${CARGO_HOME}" \
 RUN apt-get update \
     && apt-get install -y \
         --no-install-recommends \
-        libcap2-bin \
         libmariadb-dev \
         libpq-dev
 
@@ -78,7 +76,6 @@ RUN touch src/main.rs
 # Builds again, this time it'll just be
 # your actual source files being built
 RUN cargo build --features ${DB} --release
-
 
 ######################## RUNTIME IMAGE  ########################
 # Create a new stage with a minimal image
