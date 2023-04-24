@@ -26,7 +26,7 @@
 FROM empowerists/bitwarden:web-vault@sha256:e7d06a56aa09ca6cb13c88af633bb1dbcc14dff3380de37e7f5b6746a91a21a7 as vault
 
 ########################## BUILD IMAGE  ##########################
-FROM blackdex/rust-musl:x86_64-musl-stable-1.68.2 as build
+FROM blackdex/rust-musl:x86_64-musl-stable-1.69.0 as build
 
 # Build time options to avoid dpkg warnings and help with reproducible builds.
 ENV DEBIAN_FRONTEND=noninteractive \
