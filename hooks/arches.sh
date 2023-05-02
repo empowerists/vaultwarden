@@ -3,7 +3,6 @@
 # The default Debian-based images support these arches for all database backends.
 arches=(
     amd64
-    arm64
 )
 export arches
 
