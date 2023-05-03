@@ -23,7 +23,7 @@
 #     $ docker image inspect --format "{{.RepoTags}}" vaultwarden/web-vault@sha256:92896085c7ba4f81e210b70d0b978b100cadd4207c2b2531116f8575b85b3345
 #     [vaultwarden/web-vault:v2023.3.0]
 #
-FROM empowerists/bitwarden:web-vault@sha256:f589dca6cddac48883607f48e8f99218730de99d7a34a650862098f6696a9928 as vault
+FROM empowerists/bitwarden:web-vault@sha256:fd6d4f241479489d865df98ff86ca7da86c8b095a6d367287af7d6bcc4784125 as vault
 
 ########################## BUILD IMAGE  ##########################
 FROM blackdex/rust-musl:x86_64-musl-stable-1.69.0 as build
