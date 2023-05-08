@@ -15,18 +15,18 @@
 # - From https://hub.docker.com/r/vaultwarden/web-vault/tags,
 #   click the tag name to view the digest of the image it currently points to.
 # - From the command line:
-#     $ docker pull vaultwarden/web-vault:v2023.3.0
-#     $ docker image inspect --format "{{.RepoDigests}}" vaultwarden/web-vault:v2023.3.0
-#     [vaultwarden/web-vault@sha256:92896085c7ba4f81e210b70d0b978b100cadd4207c2b2531116f8575b85b3345]
+#     $ docker pull docker.io/vaultwarden/web-vault:v2023.4.0
+#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2023.4.0
+#     [docker.io/vaultwarden/web-vault@sha256:325db8d4476aab866edac799c149c556e4da256bf0beaa8443bc4d1668a009fd]
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" vaultwarden/web-vault@sha256:92896085c7ba4f81e210b70d0b978b100cadd4207c2b2531116f8575b85b3345
-#     [vaultwarden/web-vault:v2023.3.0]
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:325db8d4476aab866edac799c149c556e4da256bf0beaa8443bc4d1668a009fd
+#     [docker.io/vaultwarden/web-vault:v2023.4.0]
 #
-FROM empowerists/bitwarden:web-vault@sha256:fd6d4f241479489d865df98ff86ca7da86c8b095a6d367287af7d6bcc4784125 as vault
+FROM docker.io/empowerists/web-vault@sha256:69723af500e560bbc448662a573e03352ec8050ad83975d56ee1683a615b440c as vault
 
 ########################## BUILD IMAGE  ##########################
-FROM blackdex/rust-musl:x86_64-musl-stable-1.69.0 as build
+FROM docker.io/blackdex/rust-musl:x86_64-musl-stable-1.69.0 as build
 
 # Build time options to avoid dpkg warnings and help with reproducible builds.
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -76,7 +76,7 @@ RUN cargo build --features ${DB} --release --target=x86_64-unknown-linux-musl
 ######################## RUNTIME IMAGE  ########################
 # Create a new stage with a minimal image
 # because we already have a binary built
-FROM alpine:3.17
+FROM docker.io/library/alpine:3.17
 
 ENV ROCKET_PROFILE="release" \
     ROCKET_ADDRESS=0.0.0.0 \
