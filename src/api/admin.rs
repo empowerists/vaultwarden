@@ -324,8 +324,13 @@ async fn get_users_json(_token: AdminToken, mut conn: DbConn) -> Json<Value> {
     let mut users_json = Vec::with_capacity(users.len());
     for u in users {
         let mut usr = u.to_json(&mut conn).await;
+        usr["cipher_count"] = json!(Cipher::count_owned_by_user(&u.uuid, &mut conn).await);
         usr["UserEnabled"] = json!(u.enabled);
         usr["CreatedAt"] = json!(format_naive_datetime_local(&u.created_at, DT_FMT));
+        usr["last_active"] = match u.last_active(&mut conn).await {
+            Some(dt) => json!(format_naive_datetime_local(&dt, DT_FMT)),
+            None => json!("Never"),
+        };
         users_json.push(usr);
     }
 
