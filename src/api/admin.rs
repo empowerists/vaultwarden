@@ -36,6 +36,7 @@ pub fn routes() -> Vec<Route> {
         get_user_by_mail_json,
         post_admin_login,
         admin_page,
+        admin_page_login,
         invite_user,
         logout,
         delete_user,
@@ -256,6 +257,11 @@ fn admin_page(_token: AdminToken) -> ApiResult<Html<String>> {
     render_admin_page()
 }
 
+#[get("/", rank = 2)]
+fn admin_page_login() -> ApiResult<Html<String>> {
+    render_admin_login(None, None)
+}
+
 #[derive(Deserialize, Debug)]
 #[allow(non_snake_case)]
 struct InviteData {
@@ -318,8 +324,13 @@ async fn get_users_json(_token: AdminToken, mut conn: DbConn) -> Json<Value> {
     let mut users_json = Vec::with_capacity(users.len());
     for u in users {
         let mut usr = u.to_json(&mut conn).await;
+        usr["cipher_count"] = json!(Cipher::count_owned_by_user(&u.uuid, &mut conn).await);
         usr["UserEnabled"] = json!(u.enabled);
         usr["CreatedAt"] = json!(format_naive_datetime_local(&u.created_at, DT_FMT));
+        usr["last_active"] = match u.last_active(&mut conn).await {
+            Some(dt) => json!(format_naive_datetime_local(&dt, DT_FMT)),
+            None => json!("Never"),
+        };
         users_json.push(usr);
     }
 
@@ -761,7 +772,17 @@ impl<'r> FromRequest<'r> for AdminToken {
 
             let access_token = match cookies.get(COOKIE_NAME) {
                 Some(cookie) => cookie.value(),
-                None => return Outcome::Failure((Status::Unauthorized, "Unauthorized")),
+                None => {
+                    let requested_page =
+                        request.segments::<std::path::PathBuf>(0..).unwrap_or_default().display().to_string();
+                    // When the requested page is empty, it is `/admin`, in that case, Forward, so it will render the login page
+                    // Else, return a 401 failure, which will be caught
+                    if requested_page.is_empty() {
+                        return Outcome::Forward(Status::Unauthorized);
+                    } else {
+                        return Outcome::Failure((Status::Unauthorized, "Unauthorized"));
+                    }
+                }
             };
 
             if decode_admin(access_token).is_err() {
