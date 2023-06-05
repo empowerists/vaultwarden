@@ -15,18 +15,18 @@
 # - From https://hub.docker.com/r/vaultwarden/web-vault/tags,
 #   click the tag name to view the digest of the image it currently points to.
 # - From the command line:
-#     $ docker pull docker.io/vaultwarden/web-vault:v2023.4.2
-#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2023.4.2
-#     [docker.io/vaultwarden/web-vault@sha256:33f95dff16d8b62a6c0334ec0e425e5e549e6a826a4d8d3ea1beb95ded6acb0e]
+#     $ docker pull docker.io/vaultwarden/web-vault:v2023.5.0
+#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2023.5.0
+#     [docker.io/vaultwarden/web-vault@sha256:e5b5e99d132d50dc73176afb65f41cf3b834fb06bfa1d621ac16c705c3f10085]
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:33f95dff16d8b62a6c0334ec0e425e5e549e6a826a4d8d3ea1beb95ded6acb0e
-#     [docker.io/vaultwarden/web-vault:v2023.4.2]
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:e5b5e99d132d50dc73176afb65f41cf3b834fb06bfa1d621ac16c705c3f10085
+#     [docker.io/vaultwarden/web-vault:v2023.5.0]
 #
-FROM docker.io/empowerists/web-vault@sha256:7bb3253c3cfb67914f9c1c52d0fb3999d0719d2f50202b1cb6c224f432f29c43 as vault
+FROM docker.io/empowerists/web-vault@sha256:a8fe846ec5857d2a4e94bf9d07a53bf13593b91659f9fec0f0e8546c29e6ef67 as vault
 
 ########################## BUILD IMAGE  ##########################
-FROM docker.io/library/rust:1.69.0-bullseye as build
+FROM docker.io/library/rust:1.70.0-bullseye as build
 
 # Build time options to avoid dpkg warnings and help with reproducible builds.
 ENV DEBIAN_FRONTEND=noninteractive \
