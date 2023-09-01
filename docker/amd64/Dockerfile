@@ -26,7 +26,7 @@
 FROM docker.io/empowerists/web-vault@sha256:8ed7886ffe9224d87f88923aff33fc99480100537be8e3c60da41f2e42ba5029 as vault
 
 ########################## BUILD IMAGE  ##########################
-FROM docker.io/library/rust:1.71.1-bookworm as build
+FROM docker.io/library/rust:1.72.0-bookworm as build
 
 # Build time options to avoid dpkg warnings and help with reproducible builds.
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -54,7 +54,7 @@ WORKDIR /app
 
 # Copies over *only* your manifests and build files
 COPY ./Cargo.* ./
-COPY ./rust-toolchain ./rust-toolchain
+COPY ./rust-toolchain.toml ./rust-toolchain.toml
 COPY ./build.rs ./build.rs
 
 
