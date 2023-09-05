@@ -15,13 +15,13 @@
 # - From https://hub.docker.com/r/vaultwarden/web-vault/tags,
 #   click the tag name to view the digest of the image it currently points to.
 # - From the command line:
-#     $ docker pull docker.io/vaultwarden/web-vault:v2023.7.1
-#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2023.7.1
-#     [docker.io/vaultwarden/web-vault@sha256:b306f38fe0d54fa3d79059a737f8e1803da44ddc5f273c2aecdd6a4886211b0f]
+#     $ docker pull docker.io/vaultwarden/web-vault:v2023.8.2
+#     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2023.8.2
+#     [docker.io/vaultwarden/web-vault@sha256:b361e79309ef2c4368f880f350166daade41eb0927a9adf376c76e3713027252]
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:b306f38fe0d54fa3d79059a737f8e1803da44ddc5f273c2aecdd6a4886211b0f
-#     [docker.io/vaultwarden/web-vault:v2023.7.1]
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:b361e79309ef2c4368f880f350166daade41eb0927a9adf376c76e3713027252
+#     [docker.io/vaultwarden/web-vault:v2023.8.2]
 #
 FROM docker.io/empowerists/web-vault@sha256:8ed7886ffe9224d87f88923aff33fc99480100537be8e3c60da41f2e42ba5029 as vault
 
