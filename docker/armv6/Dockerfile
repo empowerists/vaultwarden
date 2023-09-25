@@ -23,7 +23,7 @@
 #     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:b361e79309ef2c4368f880f350166daade41eb0927a9adf376c76e3713027252
 #     [docker.io/vaultwarden/web-vault:v2023.8.2]
 #
-FROM docker.io/empowerists/web-vault@sha256:8ed7886ffe9224d87f88923aff33fc99480100537be8e3c60da41f2e42ba5029 as vault
+FROM docker.io/empowerists/web-vault@sha256:f64c8c10e643362c4010068e2afe8a5736fe9ab122db4ec61dae9c02e8840653 as vault
 
 ########################## BUILD IMAGE  ##########################
 FROM docker.io/library/rust:1.72.0-bookworm as build
