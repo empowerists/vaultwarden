@@ -225,18 +225,6 @@ jobs:
           docker rm --force arm64
           docker rmi --force "vaultwarden/server:${EXTRACT_TAG}-alpine"
 
-          # Extract armv7 binary
-          docker create --name armv7 --platform=linux/arm/v7 "vaultwarden/server:${EXTRACT_TAG}-alpine"
-          docker cp armv7:/vaultwarden vaultwarden-armv7
-          docker rm --force armv7
-          docker rmi --force "vaultwarden/server:${EXTRACT_TAG}-alpine"
-
-          # Extract armv6 binary
-          docker create --name armv6 --platform=linux/arm/v6 "vaultwarden/server:${EXTRACT_TAG}-alpine"
-          docker cp armv6:/vaultwarden vaultwarden-armv6
-          docker rm --force armv6
-          docker rmi --force "vaultwarden/server:${EXTRACT_TAG}-alpine"
-
       # Upload artifacts to Github Actions
       - name: "Upload amd64 artifact"
         uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
@@ -251,18 +239,4 @@ jobs:
         with:
           name: vaultwarden-${{ env.SOURCE_VERSION }}-linux-arm64
           path: vaultwarden-arm64
-
-      - name: "Upload armv7 artifact"
-        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
-        if: ${{ matrix.base_image == 'alpine' }}
-        with:
-          name: vaultwarden-${{ env.SOURCE_VERSION }}-linux-armv7
-          path: vaultwarden-armv7
-
-      - name: "Upload armv6 artifact"
-        uses: actions/upload-artifact@a8a3f3ad30e3422c9c7b888a15615d19a852ae32 # v3.1.3
-        if: ${{ matrix.base_image == 'alpine' }}
-        with:
-          name: vaultwarden-${{ env.SOURCE_VERSION }}-linux-armv6
-          path: vaultwarden-armv6
       # End Upload artifacts to Github Actions
