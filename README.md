@@ -5,7 +5,7 @@
 ---
 [![Build](https://github.com/empowerists/vaultwarden/actions/workflows/build.yml/badge.svg)](https://github.com/empowerists/vaultwarden/actions/workflows/build.yml)
 [![ghcr.io](https://img.shields.io/badge/ghcr.io-download-blue)](https://github.com/empowerists/vaultwarden/pkgs/container/vaultwarden)
-[![Docker Pulls](https://img.shields.io/docker/pulls/vaultwarden/server.svg)](https://hub.docker.com/r/empowerists/bitwarden)
+[![Docker Pulls](https://img.shields.io/docker/pulls/empowerists/bitwarden.svg)](https://hub.docker.com/r/empowerists/bitwarden)
 [![Dependency Status](https://deps.rs/repo/github/empowerists/vaultwarden/status.svg)](https://deps.rs/repo/github/empowerists/vaultwarden)
 [![GitHub Release](https://img.shields.io/github/release/empowerists/vaultwarden.svg)](https://github.com/empowerists/vaultwarden/releases/latest)
 [![AGPL-3.0 Licensed](https://img.shields.io/github/license/empowerists/vaultwarden.svg)](https://github.com/empowerists/vaultwarden/blob/main/LICENSE.txt)
