@@ -3,13 +3,12 @@
 📢 Note: This project was known as Bitwarden_RS and has been renamed to separate itself from the official Bitwarden server in the hopes of avoiding confusion and trademark/branding issues. Please see [#1642](https://github.com/dani-garcia/vaultwarden/discussions/1642) for more explanation.
 
 ---
-[![Build](https://github.com/dani-garcia/vaultwarden/actions/workflows/build.yml/badge.svg)](https://github.com/dani-garcia/vaultwarden/actions/workflows/build.yml)
-[![ghcr.io](https://img.shields.io/badge/ghcr.io-download-blue)](https://github.com/dani-garcia/vaultwarden/pkgs/container/vaultwarden)
-[![Docker Pulls](https://img.shields.io/docker/pulls/vaultwarden/server.svg)](https://hub.docker.com/r/vaultwarden/server)
-[![Quay.io](https://img.shields.io/badge/Quay.io-download-blue)](https://quay.io/repository/vaultwarden/server)
-[![Dependency Status](https://deps.rs/repo/github/dani-garcia/vaultwarden/status.svg)](https://deps.rs/repo/github/dani-garcia/vaultwarden)
-[![GitHub Release](https://img.shields.io/github/release/dani-garcia/vaultwarden.svg)](https://github.com/dani-garcia/vaultwarden/releases/latest)
-[![AGPL-3.0 Licensed](https://img.shields.io/github/license/dani-garcia/vaultwarden.svg)](https://github.com/dani-garcia/vaultwarden/blob/main/LICENSE.txt)
+[![Build](https://github.com/empowerists/vaultwarden/actions/workflows/build.yml/badge.svg)](https://github.com/empowerists/vaultwarden/actions/workflows/build.yml)
+[![ghcr.io](https://img.shields.io/badge/ghcr.io-download-blue)](https://github.com/empowerists/vaultwarden/pkgs/container/vaultwarden)
+[![Docker Pulls](https://img.shields.io/docker/pulls/vaultwarden/server.svg)](https://hub.docker.com/r/empowerists/bitwarden)
+[![Dependency Status](https://deps.rs/repo/github/empowerists/vaultwarden/status.svg)](https://deps.rs/repo/github/empowerists/vaultwarden)
+[![GitHub Release](https://img.shields.io/github/release/empowerists/vaultwarden.svg)](https://github.com/empowerists/vaultwarden/releases/latest)
+[![AGPL-3.0 Licensed](https://img.shields.io/github/license/empowerists/vaultwarden.svg)](https://github.com/empowerists/vaultwarden/blob/main/LICENSE.txt)
 [![Matrix Chat](https://img.shields.io/matrix/vaultwarden:matrix.org.svg?logo=matrix)](https://matrix.to/#/#vaultwarden:matrix.org)
 
 Image is based on [Rust implementation of Bitwarden API](https://github.com/dani-garcia/vaultwarden).
