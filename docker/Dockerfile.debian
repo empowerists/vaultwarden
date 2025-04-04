@@ -21,13 +21,13 @@
 # - From the command line:
 #     $ docker pull docker.io/vaultwarden/web-vault:v2025.3.1
 #     $ docker image inspect --format "{{.RepoDigests}}" docker.io/vaultwarden/web-vault:v2025.3.1
-#     [docker.io/vaultwarden/web-vault@sha256:a848d24db51731b8dfa77c71fcc5264e7bed13d1d0f740f49a81f8f7e083bd49]
+#     [docker.io/vaultwarden/web-vault@sha256:5b11739052c26dc3c2135b28dc5b072bc607f870a3e81fbbcc72e0cd1f124bcd]
 #
 # - Conversely, to get the tag name from the digest:
-#     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:a848d24db51731b8dfa77c71fcc5264e7bed13d1d0f740f49a81f8f7e083bd49
+#     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:5b11739052c26dc3c2135b28dc5b072bc607f870a3e81fbbcc72e0cd1f124bcd
 #     [docker.io/vaultwarden/web-vault:v2025.3.1]
 #
-FROM --platform=linux/amd64 ghcr.io/empowerists/bw_web_builds@sha256:a848d24db51731b8dfa77c71fcc5264e7bed13d1d0f740f49a81f8f7e083bd49 as vault
+FROM --platform=linux/amd64 ghcr.io/empowerists/bw_web_builds@sha256:a848d24db51731b8dfa77c71fcc5264e7bed13d1d0f740f49a81f8f7e083bd49 AS vault
 
 ########################## Cross Compile Docker Helper Scripts ##########################
 ## We use the linux/amd64 no matter which Build Platform, since these are all bash scripts
