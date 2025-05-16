@@ -27,7 +27,7 @@
 #     $ docker image inspect --format "{{.RepoTags}}" docker.io/vaultwarden/web-vault@sha256:a0a377b810e66a4ebf1416f732d2be06f3262bf5a5238695af88d3ec6871cc0e
 #     [docker.io/vaultwarden/web-vault:v2025.5.0]
 #
-FROM --platform=linux/amd64 ghcr.io/empowerists/bw_web_builds@sha256:77958ebe0224273d35aef1c1606dd0e62f3f8a4f016506c385900381acf88ba4 AS vault
+FROM --platform=linux/amd64 ghcr.io/empowerists/bw_web_builds@sha256:5ef10cd3fdba9a7896ae4599729f519d816b489fa4e5d056e6434b9758c95b9d AS vault
 
 ########################## ALPINE BUILD IMAGES ##########################
 ## NOTE: The Alpine Base Images do not support other platforms then linux/amd64
